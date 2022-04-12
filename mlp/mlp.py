@@ -62,12 +62,12 @@ class FNC(object):
         to_file = os.path.join(os.getcwd(),save_path,f'{str(self)}.png')
         plot_model(self.model,to_file=to_file,show_shapes=True)
         
-    def build_model(self,n_blocks=config.n_res_blocks):
+    def build_model(self):
         # Input Block
         inp = Input(shape=(self.X_train.shape[1], 1), name='Input')
 
         # Body Block 
-        x = self.body_block(x,n_blocks)
+        x = self.body_block(x)
 
         # Output block
         out = self.output_block(x)
