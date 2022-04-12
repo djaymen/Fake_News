@@ -3,10 +3,14 @@ import os
 from tabnanny import verbose
 from unicodedata import name
 import tensorflow.nn as nn
+import tensorflow as tf
 from tensorflow.keras import Input,Model
 from tensorflow.keras.utils import plot_model
 from tensorflow.keras import layers, regularizers,activations
 from tensorflow.keras.optimizers import SGD,Adam
+
+import tensorflow.python.keras.backend as K
+sess = K.get_session()
 # end imports
 
 
@@ -67,7 +71,8 @@ class FNC(object):
         
     def build_model(self):
         # Input Block
-        inp = Input(shape=(self.X_train.shape[1], 1),sparse=True,name='Input')
+        inp = Input(shape=(self.X_train.shape[1], 1),name='Input')
+        #inp = layers.Lambda(tf.sparse.to_dense)(inp)
         inp = layers.Flatten()(inp)
 
         # Body Block 
@@ -92,8 +97,11 @@ class FNC(object):
         f = 1
         for i in range(self.n_layers):
             name = f"Layer_{(i+1)}"
-            x = layers.Dense(n*f,kernel_regularizer=self.l2_reg,name=name)(x)
+            n *= f
+            x = layers.Dense(n,kernel_regularizer=self.l2_reg,name=name)(x)
+            #s = layers.Lambda(tf.sparse.to_dense)(x)
             x = self.activation(x)
+            f *= self.factor
         return x
         
     def output_block(self,x):
@@ -103,7 +111,8 @@ class FNC(object):
         return nn.relu(x)
     
     def train(self,n_epochs=config['n_epochs'],batch_size=config['batch_size']):
-        
+        tf.sparse.reorder(self.X_train)
+        tf.sparse.reorder(self.y_train)
         history = self.model.fit(self.X_train,self.y_train,
                                  epochs=n_epochs,batch_size=batch_size,
                                  verbose=True)
