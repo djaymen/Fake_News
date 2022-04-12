@@ -94,7 +94,7 @@ class FNC(object):
         
     def output_block(self,x):
         x = layers.Flatten()(x)
-        x = layers.Dense(self.y_train.shape[1],activation ='softmax',name='Output')
+        x = layers.Dense(self.y_train.shape[1],activation ='softmax',name='Output')(x)
         return x
 
     def activation(self,x):
