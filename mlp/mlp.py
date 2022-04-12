@@ -87,7 +87,7 @@ class FNC(object):
         n = self.n_nodes
         f = 1
         for i in range(self.n_layers):
-            x = layers.Dense(n*f,kernel_regularizer=self.l2_re,name=f"Layer #{i+1}")(x)
+            x = layers.Dense(n*f,kernel_regularizer=self.l2_reg,name=f"Layer #{i+1}")(x)
             x = self.activation(x)
         return x
         
