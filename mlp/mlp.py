@@ -93,9 +93,7 @@ class FNC(object):
         return x
         
     def output_block(self,x):
-        x = layers.Flatten()(x)
-        x = layers.Dense(self.y_train.shape[1],activation ='softmax',name='Output')(x)
-        return x
+        return layers.Dense(self.y_train.shape[1],activation ='softmax',name='Output')(x)
 
     def activation(self,x):
         return nn.relu(x)
