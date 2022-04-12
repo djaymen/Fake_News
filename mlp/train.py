@@ -27,7 +27,7 @@ def get_data(p=0.2):
     X , y = df['content'].values , df['label'].values
     print('Fitting TFIDF in progress...')
     vectorizer = TfidfVectorizer()
-    X_tfidf = vectorizer.fit_transform(X)
+    X_tfidf = vectorizer.fit_transform(X).toarray()
     y = to_categorical(y)
     
     X_train, X_test, y_train, y_test = train_test_split(X_tfidf,y, test_size=p)

@@ -111,8 +111,8 @@ class FNC(object):
         return nn.relu(x)
     
     def train(self,n_epochs=config['n_epochs'],batch_size=config['batch_size']):
-        tf.sparse.reorder(self.X_train)
-        tf.sparse.reorder(self.y_train)
+        #tf.sparse.reorder(self.X_train)
+        #tf.sparse.reorder(self.y_train)
         history = self.model.fit(self.X_train,self.y_train,
                                  epochs=n_epochs,batch_size=batch_size,
                                  verbose=True)
