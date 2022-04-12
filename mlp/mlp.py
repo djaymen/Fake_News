@@ -87,14 +87,13 @@ class FNC(object):
         n = self.n_nodes
         f = 1
         for i in range(self.n_layers):
-            x = layers.Dense(n*f,kernel_regularizer=self.l2_reg,name=f"Layer_{i+1}")(x)
+            name = f"Layer_{(i+1)}"
+            x = layers.Dense(n*f,kernel_regularizer=self.l2_reg,name=name)(x)
             x = self.activation(x)
         return x
         
     def output_block(self,x):
-        x = layers.Flatten()(x)
-        x = layers.Dense(self.y_train.shape[1],activation ='softmax',name='Output')
-        return x
+        return layers.Dense(self.y_train.shape[1],activation ='softmax',name='Output')(x)
 
     def activation(self,x):
         return nn.relu(x)
