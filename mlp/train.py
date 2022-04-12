@@ -25,6 +25,7 @@ def get_data(p=0.2):
     df = pd.read_csv(os.path.join(data_path,'df.csv'))
     
     X , y = df['content'].values , df['label'].values
+    print('Fitting TFIDF in progress...')
     vectorizer = TfidfVectorizer()
     X_tfidf = vectorizer.fit_transform(X)
     y = to_categorical(y)
@@ -40,9 +41,11 @@ if __name__ == '__main__':
     
     with strategy.scope():
         
+        print('Building FNC in progress...')
         fnc = FNC(X_train,y_train)
         model = fnc.build_model()
         fnc.model = model 
+        print('FNC summary')
         fnc.summary()
         
         

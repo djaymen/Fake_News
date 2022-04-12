@@ -67,7 +67,7 @@ class FNC(object):
         inp = Input(shape=(self.X_train.shape[1], 1), name='Input')
 
         # Body Block 
-        x = self.body_block(x)
+        x = self.body_block(inp)
 
         # Output block
         out = self.output_block(x)
