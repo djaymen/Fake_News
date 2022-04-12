@@ -22,7 +22,7 @@ devices = ['/device:GPU:0','/device:GPU:1','/device:GPU:2','/device:GPU:3',
 
 def get_data(p=0.2):
     
-    df = pd.read_csv(os.path.join(data_path,'train_df.csv'))
+    df = pd.read_csv(os.path.join(data_path,'df.csv'))
     
     X , y = df['content'].values , df['label'].values
     vectorizer = TfidfVectorizer()
