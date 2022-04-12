@@ -1,5 +1,6 @@
 # imports
 import os
+from tabnanny import verbose
 from unicodedata import name
 import tensorflow.nn as nn
 from tensorflow.keras import Input,Model
@@ -24,7 +25,9 @@ config =    {   'arch' : {
                 'n_layers'  : 2,
                 'l2_reg'        : 0.0001,
                 'dropout' : 0.2,
-                'lr'      : 0.0001
+                'lr'      : 0.0001,
+                'batch_size' : 512  ,
+                'n_epochs' : 20
             }
 
 
@@ -98,3 +101,18 @@ class FNC(object):
 
     def activation(self,x):
         return nn.relu(x)
+<<<<<<< HEAD
+=======
+    
+    def train(self,n_epochs=config['n_epochs'],batch_size=config['batch_size']):
+        
+        history = self.model.fit(self.X_train,self.y_train,
+                                 epochs=n_epochs,batch_size=batch_size,
+                                 verbose=True)
+        
+        return history
+    
+    def evaluate(self,X_test,y_test):
+        return self.model.evaluate(X_test,y_test,verbose=True)
+        
+>>>>>>> 8fd92b8fe71dc307dd28baa71a1351fd97055bad

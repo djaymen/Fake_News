@@ -19,3 +19,24 @@ Processing '/etc/joe/editorrc'...
 Processing '/etc/joe/ftyperc'...
 Finished processing /etc/joe/ftyperc
 Finished processing /etc/joe/editorrc
+
+*** These modified files were found in JOE when it aborted on Tue Apr 12 13:41:07 2022
+*** JOE was aborted because the terminal closed
+
+*** File '(Unnamed)'
+/root/Fake_News/.git/MERGE_MSG
+
+*** File '/root/Fake_News/.git/MERGE_MSG'
+
+Merge branch 'main' of https://github.com/djaymen/Fake_News
+# Please enter a commit message to explain why this merge is necessary,
+# especially if it merges an updated upstream into a topic branch.
+#
+# Lines starting with '#' will be ignored, and an empty message aborts
+# the commit.
+
+*** File '* Startup Log *'
+Processing '/etc/joe/editorrc'...
+Processing '/etc/joe/ftyperc'...
+Finished processing /etc/joe/ftyperc
+Finished processing /etc/joe/editorrc
