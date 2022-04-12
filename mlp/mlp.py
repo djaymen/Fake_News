@@ -67,7 +67,7 @@ class FNC(object):
         
     def build_model(self):
         # Input Block
-        inp = Input(shape=(self.X_train.shape[1], 1), name='Input')
+        inp = Input(shape=(self.X_train.shape[1], 1),sparse=True,name='Input')
         inp = layers.Flatten()(inp)
 
         # Body Block 
@@ -101,8 +101,6 @@ class FNC(object):
 
     def activation(self,x):
         return nn.relu(x)
-<<<<<<< HEAD
-=======
     
     def train(self,n_epochs=config['n_epochs'],batch_size=config['batch_size']):
         
@@ -115,4 +113,3 @@ class FNC(object):
     def evaluate(self,X_test,y_test):
         return self.model.evaluate(X_test,y_test,verbose=True)
         
->>>>>>> 8fd92b8fe71dc307dd28baa71a1351fd97055bad
