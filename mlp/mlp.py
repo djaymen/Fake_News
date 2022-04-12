@@ -65,6 +65,7 @@ class FNC(object):
     def build_model(self):
         # Input Block
         inp = Input(shape=(self.X_train.shape[1], 1), name='Input')
+        inp = layers.Flatten()(inp)
 
         # Body Block 
         x = self.body_block(inp)
