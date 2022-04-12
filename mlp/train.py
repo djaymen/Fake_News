@@ -47,6 +47,14 @@ if __name__ == '__main__':
         fnc.model = model 
         print('FNC summary')
         fnc.summary()
+        print('Start training FNC on 8 GPU\'s')
+        fnc.train()
+        print('Start Evaluation of FNC')
+        val = fnc.evaluate(X_test,y_test)
+        print(f'Evaluation results : for [{fnc}] : {val}')
+        
+        
+        
         
         
         
